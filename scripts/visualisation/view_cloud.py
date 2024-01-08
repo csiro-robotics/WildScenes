@@ -20,14 +20,20 @@ sys.path.append(str(root_dir))
 view_cloud.py
 
 This script allows for viewing 3D labeled point clouds. Input argument options provided are:
+--loaddir
+    Set to full path to a Wildscenes3d subfolder, e.g. V-01
 --viewpoint
     Options: BEV, FPV. Displays the cloud from either a birds eye view or perspective view
 --loadidx
-
+    Specify which specific cloud to load, or from which cloud to begin viewing a sequence of clouds
 --sequential
-
+    Default is to load a single cloud then exit. Sequential loads clouds one after another
 --video
-
+    Plays the clouds sequentially in a continuous video
+--videospeed
+    Defines the video playback speed, lower is faster
+    
+In default and sequential modes, when viewing a cloud, the viewer can be exited by pressing ESC
 '''
 
 
