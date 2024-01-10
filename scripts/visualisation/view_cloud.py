@@ -9,7 +9,7 @@ from threading import Thread
 from glob import glob
 from pathlib import Path
 
-from wildscenes.tools.utils import cidx_2_rgb
+from wildscenes.tools.utils3d import cidx_2_rgb
 
 
 root_dir = Path(__file__).parent.parent.parent

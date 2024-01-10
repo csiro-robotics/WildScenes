@@ -9,7 +9,7 @@ METAINFO = {
             "gravel",
             "log",
             "mud",
-            "object",
+            "other-object",
             "other-terrain",
             "rock",
             "sky",
