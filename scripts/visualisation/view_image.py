@@ -2,17 +2,10 @@ import argparse
 import sys
 import os
 import numpy as np
-import json
-from pynput import keyboard
-import time
-from threading import Thread
 import cv2
 from glob import glob
 from pathlib import Path
-
 from PIL import Image
-
-import matplotlib.pyplot as plt
 
 from wildscenes.tools.utils2d import METAINFO, class_2_cidx, cidx_2_rgb
 from wildscenes.configs.benchmark_palette_remap import custom_label_map
@@ -25,8 +18,20 @@ sys.path.append(str(root_dir))
 '''
 view_image.py
 
-This script allows for viewing 3D labeled images. Input argument options provided are:
-
+This script allows for viewing 2D labeled images. Input argument options provided are:
+--loaddir
+    Set to full path to a Wildscenes2d subfolder, e.g. V-01
+--loadidx
+    Specify which specific image to load, or from which image to begin viewing a sequence of images
+--sequential
+    Default is to load a single image then exit. Sequential loads images one after another - press a key to change 
+    the image
+--video
+    Plays the images sequentially in a continuous video
+--videospeed
+    Defines the video playback speed, lower is faster. Setting to zero defaults to sequential mode
+--raw
+    Default is to show the benchmark class set. Raw displays the full class set instead, including rare classes 
 '''
 
 
@@ -47,8 +52,14 @@ def load_image(imgfile, remap):
     return outimg
 
 
-def view_image():
-    print('')
+def view_image(pil_image, sequential=False, videospeed=0):
+    open_cv_image = np.array(pil_image)
+    open_cv_image = open_cv_image[:, :, ::-1].copy()
+
+    cv2.imshow('labelled image', open_cv_image)
+    cv2.waitKey(int(videospeed*1000))
+    if not sequential:
+        cv2.destroyAllWindows()
 
 
 
@@ -87,12 +98,22 @@ if __name__ == '__main__':
         remap = {i:r for i, r in zip(METAINFO['cidx'], remaplist)}
 
     if args.sequential:
-        print('')
+        if args.loadidx == -1:
+            args.loadidx = 0
+        for idx in range(args.loadidx, len(labels)):
+            labelimg = load_image(labels[idx], remap)
+            view_image(labelimg, sequential=True)
     elif args.video:
-        print('')
+        if args.loadidx == -1:
+            args.loadidx = 0
+        for idx in range(args.loadidx, len(labels)):
+            labelimg = load_image(labels[idx], remap)
+            view_image(labelimg, sequential=True, videospeed=args.videospeed)
     else:
         if args.loadidx == -1:
             args.loadidx = np.random.randint(len(labels))
         labelimg = load_image(labels[args.loadidx], remap)
         view_image(labelimg)
 
+    cv2.destroyAllWindows()
+    print('EXITING')
