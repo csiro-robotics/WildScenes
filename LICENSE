@@ -1,0 +1,167 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+CSIRO Clear BSD License (Non-Commercial)
+
+Copyright (c) 2023, The Software is copyright (c) Commonwealth Scientific and Industrial Research Organisation (CSIRO) ABN 41 687 119 230.
+All rights reserved. CSIRO is willing to grant you a licence to this software (WildScenes) on the following terms, except where otherwise indicated for third party material.
+
+CSIRO hereby grants you a non-exclusive, non-transferable, free of charge right to copy, modify, merge, publish, distribute, 
+and sublicense the Software for the sole purpose of performing non-commercial scientific research, non-commercial education,
+or non-commercial research projects. 
+
+Any other use, in particular any use for commercial purposes, is prohibited. This includes, without limitation, incorporation
+in a commercial product, use in a commercial service, or production of other artefacts for commercial purposes.
+
+Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+•	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+•	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+•	Neither the name of CSIRO nor the names of its authors may be used to endorse or promote products derived from this software without specific prior written permission of CSIRO.
+
+NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR CSIRO BE LIABLE FOR ANY 
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH 
+THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+You understand and agree that the authors and/or CSIRO are under no obligation to provide either maintenance services, update services,
+notices of latent defects, or corrections of defects with regard to the Software. 
+
+The Software may contain third party material obtained by CSIRO under licence.  Your rights to such material as part of the Software under this agreement 
+is subject to any separate licence terms identified by CSIRO as part of the Software release - including as part of the Supplementary Licence, or as a separate file.  
+Those third party licence terms may require you to download the relevant software from a third party site, or may mean that the third
+party licensor (and not CSIRO) grants you a licence directly for those components of the Software. It is your responsibility to ensure that
+you have the necessary rights to such third party material.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Third Party Components
+The following third party components are distributed with the Software.  You agree to comply with the licence terms for these components as part of accessing the Software.  Other third party software may also be identified in separate files distributed with the Software.
+___________________________________________________________________
+
+mmsegmentation https://github.com/open-mmlab/mmsegmentation
+
+This software is licensed under the Apache License 2.0.
+
+___________________________________________________________________
+___________________________________________________________________
+
+mmcv https://github.com/open-mmlab/mmcv
+
+This software is licensed under the Apache License 2.0.
+
+___________________________________________________________________
+___________________________________________________________________
+
+mmengine https://github.com/open-mmlab/mmengine
+
+This software is licensed under the Apache License 2.0.
+
+___________________________________________________________________
+___________________________________________________________________
+
+mmdetection3d https://github.com/open-mmlab/mmdetection3d
+
+This software is licensed under the Apache License 2.0.
+
+___________________________________________________________________
+___________________________________________________________________
+
+quaternion https://github.com/moble/quaternion
+
+This software is licensed under the MIT license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+torchsparse https://github.com/mit-han-lab/torchsparse
+
+This software is licensed under the MIT license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+PyTorch https://pytorch.org
+
+This software is licensed under a BSD-style license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+Numpy https://numpy.org  
+
+This software is licensed under a BSD-style license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+scipy https://github.com/scipy/scipy
+
+This software is licensed under the BSD-style license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+Open3D https://github.com/isl-org/Open3D
+
+This software is licensed under the MIT license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+matplotlib https://github.com/matplotlib/matplotlib
+
+This software is licensed under a BSD-style license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+pandas https://github.com/pandas-dev/pandas
+
+This software is licensed under a BSD-style license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+scikit-learn https://github.com/scikit-learn/scikit-learn
+
+This software is licensed under a BSD-style license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+opencv https://github.com/opencv/opencv-python
+
+This software is licensed under the MIT license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+pyntcloud https://github.com/daavoo/pyntcloud
+
+This software is licensed under the MIT license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+Pillow https://github.com/python-pillow/Pillow
+
+This software is licensed under the HPND license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+pynput https://github.com/moses-palmer/pynput
+
+This software is licensed under the LGPL-3.0 license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+tqdm https://github.com/tqdm/tqdm
+
+This software is licensed under the MPL license.
+
+___________________________________________________________________
+___________________________________________________________________
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
