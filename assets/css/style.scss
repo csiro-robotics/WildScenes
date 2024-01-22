@@ -1,0 +1,178 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.banner {
+  max-width: 832px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.page-header {
+  color: #159957;
+  background-color: #ffffff;
+  background-image: url("");
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+.btn {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(89, 193, 139, 0.88);
+  border-color: rgba(255, 255, 255, 0.2);
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    background-color: rgba(89, 193, 139, 0.88);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+.myTable td {
+  padding:0 15px 0 15px;
+  text-align: center;
+  border-collapse: collapse;
+  border: hidden;
+}
+table, tr, td {
+  border: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 150px auto 1fr; /* Change here */
+  align-items: start;
+  text-align: center;
+  align-content: start;
+}
+.card .image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure images cover the area */
+  object-position: center; /* Center the images */
+}
+
+.card h2 {
+  margin: 0;
+  padding: 0.5em;
+  font-size: 0.9em; /* Adjust to your preferred size */
+  color: gray; /* Change the color to gray */
+  text-align: center;
+}
+
+.card p {
+  margin: 0;
+  padding: 0.2em;
+  font-size: 0.8em;
+  text-align: center;
+  align-self: start; /* Add this */
+}
+
+/* styles.css */
+
+/* Style for the table */
+.conference-schedule {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header Row Styling */
+.conference-schedule th {
+  background-color: #838383; /* Dark grey background */
+  color: #ffffff; /* Light grey text */
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+
+/* Style for table data */
+.conference-schedule td {
+  padding: 10px;
+}
+
+/* Alternate row color */
+.conference-schedule tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+/* Image styling */
+.conference-schedule img {
+  width: 20vw; 
+  height: 20vw; 
+  object-fit: cover;
+  max-width: 150px; 
+  max-height: 150px; 
+  min-width: 80px;
+  min-height: 80px;
+  display: block;
+  margin: 0 auto; 
+}
+
+/* Optional: Style for speaker photos */
+.conference-schedule .speaker-photo {
+  width: 50px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+  border-radius: 25px; /* Optional: for circular images */
+  object-fit: cover; /* To maintain the aspect ratio of the images */
+}
+
+/* Define width for the "Time" column */
+.conference-schedule .time-column {
+  width: 100px;
+}
+
+/* Center content within each name-affiliation-cell */
+.conference-schedule .name-affiliation-cell {
+  text-align: center;
+  vertical-align: middle; /* Center the content vertically */
+}
+
+/* Optional: Center the text within each name and affiliation div */
+.conference-schedule .name,
+.conference-schedule .affiliation {
+  text-align: center;
+}
+
+/* Optional: Add some spacing between the name and affiliation */
+.conference-schedule .name {
+  margin-bottom: 5px;
+}
+
+/* Optional: Style for speaker photos */
+.conference-schedule .speaker-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+/* Styling for the cell containing images */
+.speaker-photo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* or 'space-between' or 'center', etc. */
+}
+
+/* Styling for the images */
+.speaker-photo-cell img.speaker-photo {
+  width: 10px; /* You can adjust as per your need */
+  height: 10px; /* You can adjust as per your need */
+  object-fit: cover;
+}
+/* Type Column Styling */
+.conference-schedule .type-column {
+  text-align: center;
+}
