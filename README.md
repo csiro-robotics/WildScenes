@@ -1,4 +1,4 @@
-# WildScenes: A benchmark for 2D and 3D Semantic Segmentation in Natural Environments
+# WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Natural Environments
 
 This is the official repo for the WildScenes dataset, which provides benchmarks for semantic segmentation in 2D and 3D.
 
