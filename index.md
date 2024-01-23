@@ -79,7 +79,7 @@ The dataset will be released very soon.
 <p>
 If you find this paper helpful for your research, please cite our paper using the following reference:
 
-<code>
+```
 @misc{vidanapathirana2023wildscenes,
       title={WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Large-scale Natural Environments}, 
       author={Kavisha Vidanapathirana and Joshua Knights and Stephen Hausler and Mark Cox and Milad Ramezani and Jason Jooste and Ethan Griffiths and Shaheer Mohamed and Sridha Sridharan and Clinton Fookes and Peyman Moghadam},
@@ -88,5 +88,5 @@ If you find this paper helpful for your research, please cite our paper using th
       archivePrefix={arXiv},
       primaryClass={cs.RO}
 }
-</code>
+```
 </p>
