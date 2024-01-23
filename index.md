@@ -1,4 +1,4 @@
-## WildScenes: A benchmark for 2D and 3D Semantic Segmentation in Natural Environments
+## WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Natural Environments
 
 
 
