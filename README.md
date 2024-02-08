@@ -8,7 +8,7 @@ Recent progress in semantic scene understanding has primarily been enabled by th
 
 ### Package Requirements
 
-Please refer to the requirements.txt file. Recommend using Python >= 3.8.
+Please refer to the installation.md file for detailed instructions. The full list of required packages are also detailed in the requirements.txt file. Requires Python >= 3.8 and recommend Python = 3.10.
 
 
 ### Visualization Scripts

@@ -32,6 +32,8 @@ This script allows for viewing 3D labeled point clouds. Input argument options p
     Plays the clouds sequentially in a continuous video
 --videospeed
     Defines the video playback speed, lower is faster
+--update_viewpoint_jsons
+    Allows user to change the default viewpoints for FPV or BEV modes
     
 In default and sequential modes, when viewing a cloud, the viewer can be exited by pressing ESC
 '''
@@ -65,7 +67,7 @@ def view_cloud(pcd, coord, view_params, render_param_file, firstloop=True, video
     vis.add_geometry(pcd)
     vis.add_geometry(coord)
     vis.get_render_option().load_from_json(render_param_file)
-    ctr.convert_from_pinhole_camera_parameters(view_params)
+    ctr.convert_from_pinhole_camera_parameters(view_params, True)
     vis.update_geometry(pcd)
     vis.update_geometry(coord)
 
@@ -106,6 +108,17 @@ def view_cloud(pcd, coord, view_params, render_param_file, firstloop=True, video
     vis.remove_geometry(coord)
 
 
+def save_view_point(pcd, filename):
+    vis = o3d.visualization.Visualizer()
+    vis.create_window(width=1080, height=1080)
+    vis.add_geometry(pcd)
+    vis.add_geometry(create_axis_arrow())
+    vis.run() # adjust and press 'q'
+    param = vis.get_view_control().convert_to_pinhole_camera_parameters()
+    o3d.io.write_pinhole_camera_parameters(filename, param)
+    vis.destroy_window()
+
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -121,6 +134,7 @@ if __name__ == '__main__':
                         help="View the clouds as a continuous video, starting from 0 or loadidx")
     parser.add_argument('--videospeed', default=0.5, type=float,
                         help='Video playback speed, lower is faster')
+    parser.add_argument('--update_viewpoint_jsons', default=False, action='store_true')
     args = parser.parse_args()
 
     cloud_xyz = sorted(glob(os.path.join(args.loaddir, 'Clouds', '*')))
@@ -128,6 +142,15 @@ if __name__ == '__main__':
 
     if args.loadidx >= len(labels):
         raise ValueError('Your loadidx is greater than the number of clouds in this traverse')
+
+    if args.update_viewpoint_jsons: # if want to resave viewpoint settings for a custom viewpoint:
+        dir_path = os.path.join(root_dir, 'wildscenes', 'configs')
+        if args.viewpoint == 'BEV':
+            pcd = load_pcd(cloud_xyz[args.loadidx], labels[args.loadidx])
+            save_view_point(pcd, os.path.join(dir_path, 'viewpoint_bev.json'))
+        else:
+            pcd = load_pcd(cloud_xyz[args.loadidx], labels[args.loadidx], fpv=True)
+            save_view_point(pcd, os.path.join(dir_path, 'viewpoint_fpv.json'))
 
     if args.viewpoint == 'BEV':
         view_params = o3d.io.read_pinhole_camera_parameters(
@@ -139,7 +162,7 @@ if __name__ == '__main__':
         render_param_file = os.path.join(root_dir, 'wildscenes', 'configs', 'render_fpv.json')
 
     vis = o3d.visualization.Visualizer()
-    vis.create_window(width=960, height=1080, visible=True)
+    vis.create_window(width=1080, height=1080, visible=True)
     ctr = vis.get_view_control()
     coord = create_axis_arrow(1)
 
