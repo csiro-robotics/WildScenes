@@ -10,6 +10,17 @@ Recent progress in semantic scene understanding has primarily been enabled by th
 
 Please refer to the installation.md file for detailed instructions. The full list of required packages are also detailed in the requirements.txt file. Requires Python >= 3.8 and recommend Python = 3.10.
 
+### Dataset Setup
+
+Dataset will be released soon. Instructions below apply after release.
+
+After downloading the WildScenes dataset to a directory of your choice, before you can use the dataset with this repository, the setup_data.py script needs to be run (scripts/data/setup_data.py).
+
+#### setup_data.py
+
+This script creates full paths to individual files in the WildScenes dataset, based on your dataset save location and the split details in /data/splits.
+The input argument --dataset_rootdir is required, and must be the full path to the root directory of WildScenes. 
+This script will produce pickle files for 3D training and evaluation, and setup symlinks for 2D training and evaluation.
 
 ### Visualization Scripts
 
@@ -36,6 +47,10 @@ your computer, e.g. YOURPATH/wildscenes2d/Karawatha-1. Images can be viewed indi
 Will be released soon.
 
 ### Training code
+
+Will be released soon.
+
+### Evaluation code
 
 Will be released soon.
 

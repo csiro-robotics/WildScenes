@@ -44,20 +44,18 @@ def get_wildscenes_info(splitdir: Path, dset_path: Path):
     return train_info, test_info, val_info
 
 
-def create_wildscenes_info_file(splitdir: str, dset_path: str, pkl_prefix: str, save_path: str):
+def create_wildscenes_info_file(splitdir: Path, dset_path: str, pkl_prefix: str, save_path: Path):
     """Create info file of WildScenes dataset (similar style as SemanticKITTI dataset) - for 3D.
 
     Directly generate info file without raw data.
 
     Args:
-        splitdir (str): Path to the split files dir to use.
+        splitdir (Path): Path to the split files dir to use.
         dset_path (str): Path to where you downloaded and saved the WildScenes dataset.
         pkl_prefix (str): Prefix of the info file to be generated.
-        save_path (str): Path to save the info file.
+        save_path (Path): Path to save the info file.
     """
     print('Generate 3D info')
-    save_path = Path(save_path)
-    splitdir = Path(splitdir)
     dset_path = Path(dset_path)
 
     train, test, val = get_wildscenes_info(splitdir, dset_path)
@@ -73,3 +71,89 @@ def create_wildscenes_info_file(splitdir: str, dset_path: str, pkl_prefix: str, 
     filename = save_path / f'{pkl_prefix}_infos_test.pkl'
     print(f'WildScenes info test file is saved to {filename}')
     mmengine.dump(test, filename)
+
+
+def create_split_subdir(out_dir: Path, split_file: Path, dset_path: Path):
+    """Create a series of directories with symlinks to the original image files based on the split file.
+
+    dataset_dir: the directory in which the split dirs will reside
+    split_file: the path to the split file
+
+    NOTE: It would be better to take in the df directly, but then we would need to maintain conistency with the relative paths in the df (which are relative to the file path.
+
+    NOTE: This is very slow. A bash script would be faster. Convert to absolute paths and then use -r
+    """
+    # todo: need to also convert the rel paths in split_file to point to the full path to the dataset itself
+    out_dir = out_dir / split_file.stem
+    (out_dir / "image").mkdir(parents=True, exist_ok=True)
+    (out_dir / "indexLabel").mkdir(parents=True, exist_ok=True)
+    # Read in the split file
+    split_dir = split_file.parent  # Paths in the df are relative to this dir
+    split_df = pd.read_csv(split_file, index_col="id")
+    for ID, row in split_df.iterrows():
+        img_path, label_path = row
+        # Get abs paths for the images
+        img_path = (dset_path / img_path).resolve() # ???
+        label_path = (split_dir / label_path).resolve()
+        assert (
+            img_path.exists() and label_path.exists()
+        ), f"Paths to image {img_path} or {label_path} does not exist"
+        # Remove existing symlinks
+        dest_img = out_dir / "image" / (ID + ".png")
+        dest_label = out_dir / "indexLabel" / (ID + ".png")
+        if (
+            dest_img.exists() or dest_img.is_symlink()
+        ):  # bad symlinks don't "exist" but still need to be removed
+            assert (
+                dest_img.is_symlink()
+            ), f"File {dest_img} should be a symlink but isn't"
+            os.remove(dest_img)
+        if dest_label.exists():
+            assert (
+                dest_label.is_symlink()
+            ), f"File {dest_label} should be a symlink but isn't"
+            os.remove(dest_label)
+        # Get paths relative to output dir
+        img_out_rel = os.path.relpath(img_path, dest_img.parent)
+        label_out_rel = os.path.relpath(label_path, dest_label.parent)
+        # Create the symlinks
+        dest_img.symlink_to(img_out_rel)
+        dest_label.symlink_to(label_out_rel)
+
+'''
+mmsegmentation (2D) requires the following file format:
+
+dsetname
+    test
+        image
+        indexLabel
+    train
+        image
+        indexLabel
+    val
+        image
+        indexLabel
+
+Files within directories are symlinks to the original save location of the WildScenes dataset
+'''
+def create_mmseg_filestructure(split_dir: Path, dataset_dir: str, save_path: Path):
+    """Convert a set of split files to an mmseg-style hierarchical directory structure"""
+    if dataset_dir is None:
+        save_path = split_dir
+    else:
+        Path(dataset_dir).mkdir(parents=True, exist_ok=True)
+    dataset_dir = Path(dataset_dir)
+    split_dir = split_dir / 'opt2d'
+    if not split_dir.exists():
+        raise ValueError(f"Split dir {split_dir} does not exist")
+    # Create the directory structure and symlinks
+    split_files = split_dir.glob("*")
+    for split_file in split_files:
+        if split_file.stem not in ["test", "train", "val"]:
+            if not split_file.stem.startswith("ex_"):
+                print(
+                    f"Warning: file ignored in split dir that doesn't belong to test/train/val {split_file.name}"
+                )
+            continue
+        create_split_subdir(dataset_dir, split_file)
+    print('done')
