@@ -8,9 +8,9 @@ from tqdm import tqdm
 def get_info(csv_path: Path, dset_path: Path):
     df = pd.read_csv(csv_path, dtype=str)
 
-    df['lidar_path'] = df['lidar_path'].str.replace('/WildScenes3d', str(dset_path) + '/WildScenes3d')
-    df['label_path'] = df['label_path'].str.replace('/WildScenes3d', str(dset_path) + '/WildScenes3d')
-    df['hist_path'] = df['hist_path'].str.replace('/WildScenes3d', str(dset_path) + '/WildScenes3d')
+    df['lidar_path'] = df['lidar_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
+    df['label_path'] = df['label_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
+    df['hist_path'] = df['hist_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
 
     data_list = []
 
@@ -58,6 +58,8 @@ def create_wildscenes_info_file(splitdir: Path, dset_path: str, pkl_prefix: str,
     print('Generate 3D info')
     dset_path = Path(dset_path)
 
+    save_path.mkdir(parents=True, exist_ok=True)
+
     train, test, val = get_wildscenes_info(splitdir, dset_path)
 
     filename = save_path / f'{pkl_prefix}_infos_train.pkl'
@@ -90,11 +92,11 @@ def create_split_subdir(out_dir: Path, split_file: Path, dset_path: Path):
     # Read in the split file
     split_dir = split_file.parent  # Paths in the df are relative to this dir
     split_df = pd.read_csv(split_file, index_col="id")
-    for ID, row in split_df.iterrows():
+    for ID, row in tqdm(split_df.iterrows()):
         img_path, label_path = row
         # Get abs paths for the images
         img_path = (dset_path / img_path).resolve() # ???
-        label_path = (split_dir / label_path).resolve()
+        label_path = (dset_path / label_path).resolve()
         assert (
             img_path.exists() and label_path.exists()
         ), f"Paths to image {img_path} or {label_path} does not exist"
@@ -137,13 +139,14 @@ dsetname
 Files within directories are symlinks to the original save location of the WildScenes dataset
 '''
 def create_mmseg_filestructure(split_dir: Path, dataset_dir: str, save_path: Path):
-    """Convert a set of split files to an mmseg-style hierarchical directory structure"""
-    if dataset_dir is None:
-        save_path = split_dir
-    else:
-        Path(dataset_dir).mkdir(parents=True, exist_ok=True)
+    """Convert a set of split files to an mmseg-style hierarchical directory structure
+
+    Args:
+        splitdir (Path): Path to the split files dir to use.
+        dataset_dir (str): Path to where you downloaded and saved the WildScenes dataset.
+        save_path (Path): Path to save the generated symlinks for mmsegmentation2d.
+    """
     dataset_dir = Path(dataset_dir)
-    split_dir = split_dir / 'opt2d'
     if not split_dir.exists():
         raise ValueError(f"Split dir {split_dir} does not exist")
     # Create the directory structure and symlinks
@@ -155,5 +158,5 @@ def create_mmseg_filestructure(split_dir: Path, dataset_dir: str, save_path: Pat
                     f"Warning: file ignored in split dir that doesn't belong to test/train/val {split_file.name}"
                 )
             continue
-        create_split_subdir(dataset_dir, split_file)
+        create_split_subdir(save_path, split_file, dataset_dir)
     print('done')
