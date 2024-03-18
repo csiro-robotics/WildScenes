@@ -8,9 +8,9 @@ from tqdm import tqdm
 def get_info(csv_path: Path, dset_path: Path):
     df = pd.read_csv(csv_path, dtype=str)
 
-    df['lidar_path'] = df['lidar_path'].str.replace('/Wildscenes3d', str(dset_path) + '/Wildscenes3d')
-    df['label_path'] = df['label_path'].str.replace('/Wildscenes3d', str(dset_path) + '/Wildscenes3d')
-    df['hist_path'] = df['hist_path'].str.replace('/Wildscenes3d', str(dset_path) + '/Wildscenes3d')
+    df['lidar_path'] = df['lidar_path'].str.replace('/WildScenes3d', str(dset_path) + '/WildScenes3d')
+    df['label_path'] = df['label_path'].str.replace('/WildScenes3d', str(dset_path) + '/WildScenes3d')
+    df['hist_path'] = df['hist_path'].str.replace('/WildScenes3d', str(dset_path) + '/WildScenes3d')
 
     data_list = []
 
