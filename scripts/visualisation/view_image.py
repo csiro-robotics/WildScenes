@@ -7,12 +7,11 @@ from glob import glob
 from pathlib import Path
 from PIL import Image
 
-from wildscenes.tools.utils2d import METAINFO, class_2_cidx, cidx_2_rgb
-from wildscenes.configs.benchmark_palette_remap import custom_label_map
-
-
 root_dir = Path(__file__).parent.parent.parent
 sys.path.append(str(root_dir))
+
+from wildscenes.tools.utils2d import METAINFO, class_2_cidx, cidx_2_rgb
+from wildscenes.configs.benchmark_palette_remap import custom_label_map
 
 
 '''

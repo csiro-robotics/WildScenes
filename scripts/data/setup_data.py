@@ -3,11 +3,10 @@ import sys
 from pathlib import Path
 import argparse
 
-from wildscenes.tools import wildscenes_converter
-
-
 root_dir = Path(__file__).parent.parent.parent
 sys.path.append(str(root_dir))
+
+from wildscenes.tools import wildscenes_converter
 
 
 '''
@@ -38,7 +37,8 @@ def main(args):
 
 if __name__ == '__main__':
         parser = argparse.ArgumentParser()
-        parser.add_argument('--dataset_rootdir', type=str, required=True, default=None)
+        parser.add_argument('--dataset_rootdir', type=str, required=True, default=None,
+                            help='This is the full path to the root directory of WildScenes')
         parser.add_argument('--splitdir', type=Path, default=root_dir / "data" / "splits")
         parser.add_argument('--savedir', type=Path, default=root_dir / "data" / "processed")
         parser.add_argument('--overwrite', default=False, action='store_true',

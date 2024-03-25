@@ -1,6 +1,6 @@
 # WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Natural Environments
 
-This is the official repo for the WildScenes dataset, which provides benchmarks for semantic segmentation in 2D and 3D.
+This is the official repo for the WildScenes dataset, which provides benchmarks for semantic segmentation in 2D and 3D. Training is performed using the [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) toolboxs. We thank and acknowledge the contributions of these toolboxes.
 
 ### Abstract
 
@@ -47,6 +47,15 @@ your computer, e.g. YOURPATH/wildscenes2d/Karawatha-1. Images can be viewed indi
 Will be released soon.
 
 ### Training code
+
+All training and eval scripts are located in the directory scripts/benchmark.
+
+#### 2D Training
+
+Using mmsegmentation, 2D models can be trained using train2d.py. 
+So far we have released Mask2Former training on WildScenes.
+
+#### 3D Training
 
 Will be released soon.
 

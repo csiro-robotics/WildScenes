@@ -10,7 +10,7 @@ Mamba is a replacement for conda and behaves the same except is faster especiall
 These installation instructions are written for CUDA version 12.1.
 
 ```shell
-mamba create --name wildscenes3 python=3.10
+mamba create --name wildscenes python=3.10
 mamba activate wildscenes
 ```
 
@@ -27,7 +27,7 @@ Step 1: Install Pytorch
 Using CUDA 12.1:
 
 ```shell
-mamba install pytorch torchvision pytorch-cuda -c pytorch -c nvidia -c
+mamba install pytorch torchvision pytorch-cuda -c pytorch -c nvidia
 ```
 
 On CPU only platforms:
@@ -69,6 +69,10 @@ pip install pillow
 pip install tensorboard
 pip install matplotlib
 pip install open3d==0.1.8
+pip install pyntcloud
+pip install wand
+pip install ftfy
+pip install regex
 ```
 
 Step 6: Install other required mamba packages (or install using pip)
