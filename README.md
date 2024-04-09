@@ -52,8 +52,14 @@ All training and eval scripts are located in the directory scripts/benchmark.
 
 #### 2D Training
 
+2D Training has not been fully released yet, please don't raise issues yet as this section of the code is still being debugged.
+
 Using mmsegmentation, 2D models can be trained using train2d.py. 
 So far we have released Mask2Former training on WildScenes.
+
+Additional documentation will be released soon.
+
+Please note that the seed is not set by default, therefore your own 2D training will not be able to exactly reproduce the results in the paper.
 
 #### 3D Training
 

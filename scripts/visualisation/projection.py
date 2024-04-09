@@ -182,7 +182,7 @@ if __name__ == '__main__':
     # If want to convert points into a global ref frame:
     # test = cloud_wrt_camera.transform(T)
 
-    viewcloud = np.asarray(test.points)
+    viewcloud = np.asarray(cloud_wrt_camera.points)
 
     # pcd_transformed = pcd.transform(global2local)
     # viewcloud = np.asarray(pcd_transformed.points)
