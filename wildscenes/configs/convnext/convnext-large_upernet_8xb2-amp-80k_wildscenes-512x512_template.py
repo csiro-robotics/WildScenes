@@ -18,7 +18,8 @@ decode_head = dict(
         in_channels=[192, 384, 768, 1536],
     )
 aux_head = dict(in_channels=768)
-test_cfg=dict(mode='slide', stride=(426, 426))
+# test_cfg=dict(mode='slide', stride=(426, 426))
+test_cfg = dict(type='TestLoop')
 model = dict(
     backbone=backbone,
     decode_head=decode_head,
