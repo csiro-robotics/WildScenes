@@ -60,7 +60,7 @@ Our dataset consists of over 21km and 300 minutes of continuous lidar traversal,
 
 ### Download
 
-The dataset will be released very soon.
+The dataset has been released and can be accessed at https://data.csiro.au/collection/csiro:61541.
 
 ### GitHub
  <p>
