@@ -12,7 +12,7 @@ Please refer to the installation.md file for detailed instructions. The full lis
 
 ### Dataset Setup
 
-Dataset will be released soon. Instructions below apply after release.
+Dataset has been released and can be accessed at: https://data.csiro.au/collection/csiro:61541
 
 After downloading the WildScenes dataset to a directory of your choice, before you can use the dataset with this repository, the setup_data.py script needs to be run (scripts/data/setup_data.py).
 
@@ -48,14 +48,14 @@ Will be released soon.
 
 ### Training code
 
-All training and eval scripts are located in the directory scripts/benchmark.
+All training and eval scripts are located in the directory scripts/benchmark. We use the open source mmsegmentation and mmdetection3d repositories for training and evaluating semantic segmentation on WildScenes.
 
 #### 2D Training
 
 2D Training has not been fully released yet, please don't raise issues yet as this section of the code is still being debugged.
 
 Using mmsegmentation, 2D models can be trained using train2d.py. 
-So far we have released Mask2Former training on WildScenes.
+We will release pre-configured bash scripts for training soon.
 
 Additional documentation will be released soon.
 
@@ -63,11 +63,11 @@ Please note that the seed is not set by default, therefore your own 2D training 
 
 #### 3D Training
 
-Will be released soon.
+3D Training is still under development and will be released soon.
 
 ### Evaluation code
 
-Will be released soon.
+Evaluation can be performed using eval2d.py and eval3d.py. Documentation and bash scripts will be released soon.
 
 ### Citation
 <p>
@@ -83,3 +83,7 @@ If you find this dataset helpful for your research, please cite our paper using 
       primaryClass={cs.RO}
 }
 ```
+
+### Acknowledgements
+
+We kindly thank the authors of [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) for open sourcing their methods and training scripts.

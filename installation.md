@@ -49,7 +49,7 @@ Step 3: Wildscenes utilizes mmdetection3d
 
 ```shell
 mim install "mmdet>=3.0.0"
-pip install "mmdet3d>=1.1.0"
+pip install "mmdet3d>=1.3.0"
 ```
 
 Step 4: Install Torchsparse

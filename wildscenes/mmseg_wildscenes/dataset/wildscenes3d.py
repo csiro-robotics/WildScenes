@@ -1,4 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
+# Acknowledgements to the mmdetection3d repository: https://github.com/open-mmlab/mmdetection3d
+# Original file "semantickitt_dataset.py" modified for the WildScenes dataset.
+
 from typing import Callable, List, Optional, Sequence, Union
 
 import numpy as np
