@@ -12,7 +12,7 @@ Please refer to the installation.md file for detailed instructions. The full lis
 
 ### Dataset Setup
 
-Dataset will be released soon. Instructions below apply after release.
+Dataset has been released and can be accessed at: https://data.csiro.au/collection/csiro:61541
 
 After downloading the WildScenes dataset to a directory of your choice, before you can use the dataset with this repository, the setup_data.py script needs to be run (scripts/data/setup_data.py).
 
