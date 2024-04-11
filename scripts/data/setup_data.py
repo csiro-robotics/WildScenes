@@ -21,7 +21,7 @@ def main(args):
                 wildscenes_converter.create_wildscenes_info_file(
                         splitdir=args.splitdir / "opt3d",
                         dset_path=args.dataset_rootdir,
-                        pkl_prefix='wildscenes3d',
+                        pkl_prefix='wildscenes',
                         save_path=args.savedir / "wildscenes_opt3d")
 
         print('Setting up 2D data...')

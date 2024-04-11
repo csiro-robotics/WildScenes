@@ -5,12 +5,20 @@
 import argparse
 import os
 import os.path as osp
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
+import sys
+from pathlib import Path
 
 from mmengine.config import Config, ConfigDict, DictAction
-from mmengine.registry import RUNNERS
+# from mmengine.registry import RUNNERS
 from mmengine.runner import Runner
 
 from mmdet3d.utils import replace_ceph_backend
+
+root_dir = Path(__file__).parent.parent.parent
+sys.path.append(str(root_dir))
+
+from wildscenes.mmdet_wildscenes.registry import RUNNERS3D as RUNNERS
 
 
 def parse_args():
