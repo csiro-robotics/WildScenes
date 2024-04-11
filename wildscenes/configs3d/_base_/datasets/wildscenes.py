@@ -3,7 +3,8 @@
 # i.e. we consider the unlabeled class as the last one, which is different
 # from the original implementation of some methods e.g. Cylinder3D.
 dataset_type = 'WildScenesDataset3d'
-data_root = '/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_opt3d'
+data_root = '/raid/work/hau047/wildscenes/Dev_IJRR_rebuttal/WildScenes/data/processed/wildscenes_opt3d'
+# data_root = '/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_opt3d'
 
 # Raw labels (For visualising how to change)
 # labels_map = {
@@ -99,8 +100,6 @@ train_pipeline = [
         with_bbox_3d=False,
         with_label_3d=False,
         with_seg_3d=True,
-        with_hist_3d=True,
-        num_classes=13,
         seg_3d_dtype='np.int32',
         seg_offset=2**16,
         dataset_type='wildscenes',
@@ -131,8 +130,6 @@ test_pipeline = [
         with_bbox_3d=False,
         with_label_3d=False,
         with_seg_3d=True,
-        with_hist_3d=True,
-        num_classes=13,
         seg_3d_dtype='np.int32',
         seg_offset=2**16,
         dataset_type='wildscenes',
@@ -163,7 +160,6 @@ tta_pipeline = [
         with_bbox_3d=False,
         with_label_3d=False,
         with_seg_3d=True,
-        with_hist_3d=True,
         seg_3d_dtype='np.int32',
         seg_offset=2**16,
         dataset_type='wildscenes',
@@ -258,7 +254,8 @@ test_dataloader = dict(
 # val_dataloader = test_dataloader
 
 val_evaluator = dict(type='SegMetric')
-test_evaluator = val_evaluator
+# test_evaluator = val_evaluator
+test_evaluator = dict(type='SegMetric')
 
 vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
