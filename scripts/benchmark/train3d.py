@@ -19,7 +19,8 @@ from mmdet3d.utils import replace_ceph_backend
 root_dir = Path(__file__).parent.parent.parent
 sys.path.append(str(root_dir))
 
-from wildscenes.mmseg_wildscenes.registry.registry3d import RUNNERS
+# from wildscenes.mmseg_wildscenes.registry.registry3d import RUNNERS
+from wildscenes.mmdet_wildscenes.registry import RUNNERS3D as RUNNERS
 
 
 def parse_args():
