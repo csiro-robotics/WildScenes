@@ -1,7 +1,7 @@
 root_dir = ''
 
 _base_ = [
-    '../_base_/models/deeplabv3_r50-d8_nopretrain.py', '../_base_/datasets/wildscenes_standard_dgx.py',
+    '../_base_/models/deeplabv3_r50-d8_nopretrain.py', '../_base_/datasets/wildscenes_standard.py',
     '../_base_/default_runtime.py', "../_base_/schedules/schedule_80k.py"
 ]
 
