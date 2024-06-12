@@ -3,8 +3,8 @@
 # i.e. we consider the unlabeled class as the last one, which is different
 # from the original implementation of some methods e.g. Cylinder3D.
 dataset_type = 'WildScenesDataset3d'
-data_root = '/raid/work/hau047/wildscenes/Dev_IJRR_rebuttal/WildScenes/data/processed/wildscenes_opt3d'
-# data_root = '/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_opt3d'
+# data_root = '/raid/work/hau047/wildscenes/Dev_IJRR_rebuttal/WildScenes/data/processed/wildscenes_opt3d'
+data_root = '/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_opt3d'
 
 # Raw labels (For visualising how to change)
 # labels_map = {

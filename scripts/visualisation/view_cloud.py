@@ -3,9 +3,7 @@ import sys
 import os
 import open3d as o3d
 import numpy as np
-from pynput import keyboard
 import time
-from threading import Thread
 from glob import glob
 from pathlib import Path
 
@@ -26,7 +24,8 @@ This script allows for viewing 3D labeled point clouds. Input argument options p
 --loadidx
     Specify which specific cloud to load, or from which cloud to begin viewing a sequence of clouds
 --sequential
-    Default is to load a single cloud then exit. Sequential loads clouds one after another
+    Default is to load a single cloud then exit. Sequential loads clouds one after another. Press q to go to the next
+        cloud.
 --video
     Plays the clouds sequentially in a continuous video
 --videospeed
@@ -62,7 +61,7 @@ def create_axis_arrow(size=3.0):
     return mesh_frame
 
 
-def view_cloud(pcd, coord, view_params, render_param_file, firstloop=True, video=False, videospeed=0.1):
+def view_cloud_video(pcd, coord, view_params, render_param_file, firstloop=True, video=False, videospeed=0.1):
     vis.add_geometry(pcd)
     vis.add_geometry(coord)
     vis.get_render_option().load_from_json(render_param_file)
@@ -70,38 +69,9 @@ def view_cloud(pcd, coord, view_params, render_param_file, firstloop=True, video
     vis.update_geometry(pcd)
     vis.update_geometry(coord)
 
-    if not video:
-        print('Press ESC to exit the submap cloud viz')
-
-        def on_press(key, endkey='esc'):
-            try:
-                k = key.char  # single-char keys
-            except:
-                k = key.name  # other keys
-
-            if k == endkey:
-                print('ending viz ...')
-                return False  # stop listener
-
-        def loop_fun():
-            while True:
-                vis.poll_events()
-                vis.update_renderer()
-                time.sleep(0.05)
-
-        listener = keyboard.Listener(on_press=on_press)
-        listener.start()  # start to listen on a separate thread
-
-        # start thread with loop
-        if firstloop:
-            t = Thread(target=loop_fun, args=(), name='loop_fun', daemon=True)
-            t.start()
-
-        listener.join() # wait for endkey
-    else:
-        vis.poll_events()
-        vis.update_renderer()
-        time.sleep(videospeed)
+    vis.poll_events()
+    vis.update_renderer()
+    time.sleep(videospeed)
 
     vis.remove_geometry(pcd)
     vis.remove_geometry(coord)
@@ -121,7 +91,7 @@ def save_view_point(pcd, filename):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--loaddir', default=str(root_dir.parent / 'Wildscenes3d' / 'K-01'),
+    parser.add_argument('--loaddir', default=str(root_dir.parent / 'WildScenes' / 'WildScenes3d' / 'K-01'),
                         help="Path to directory in WildScenes to read data, for example K-01")
     parser.add_argument('--viewpoint', choices=['BEV', 'FPV'], default='BEV',
                         help="Choice of viewpoints for rendering the labeled 3D point clouds, either birds eye view or first person view")
@@ -135,6 +105,10 @@ if __name__ == '__main__':
                         help='Video playback speed, lower is faster')
     parser.add_argument('--update_viewpoint_jsons', default=False, action='store_true')
     args = parser.parse_args()
+
+    if not os.path.exists(args.loaddir):
+        raise ValueError('Please set the loaddir argument to a subfolder (e.g. K-01) inside the WildScenes dataset. '
+                         'This path (full path) should be set to whereever you downloaded the WildScenes dataset to.')
 
     cloud_xyz = sorted(glob(os.path.join(args.loaddir, 'Clouds', '*')))
     labels = sorted(glob(os.path.join(args.loaddir, 'Labels', '*')))
@@ -160,24 +134,29 @@ if __name__ == '__main__':
             os.path.join(root_dir, 'wildscenes', 'configs', 'viewpoint_fpv.json'))
         render_param_file = os.path.join(root_dir, 'wildscenes', 'configs', 'render_fpv.json')
 
-    vis = o3d.visualization.Visualizer()
-    vis.create_window(width=1080, height=1080, visible=True)
-    ctr = vis.get_view_control()
-    coord = create_axis_arrow(1)
-
     if args.sequential:
-        firstloop = True
         if args.loadidx == -1:
             args.loadidx = 0
         for idx in range(args.loadidx, len(labels)):
             if args.viewpoint == 'BEV':
                 pcd = load_pcd(cloud_xyz[idx], labels[idx])
+                o3d.visualization.draw_geometries([pcd],
+                                                  zoom=0.3412,
+                                                  front=[-0.268, 1.51238, 66.3],
+                                                  lookat=[2.6172, 2.0475, 1.532],
+                                                  up=[-0.0694, -0.9768, 0.2024])
             else:
                 pcd = load_pcd(cloud_xyz[idx], labels[idx], fpv=True)
-            view_cloud(pcd, coord, view_params, render_param_file, firstloop=firstloop)
-            firstloop = False
-
+                o3d.visualization.draw_geometries([pcd],
+                                                  zoom=0.3412,
+                                                  front=[-10, 0, 0],
+                                                  lookat=[0, -10, 10],
+                                                  up=[0, 0, 1])
     elif args.video:
+        vis = o3d.visualization.Visualizer()
+        vis.create_window(width=1080, height=1080, visible=True)
+        ctr = vis.get_view_control()
+        coord = create_axis_arrow(1)
         if args.loadidx == -1:
             args.loadidx = 0
         for idx in range(args.loadidx, len(labels)):
@@ -185,16 +164,24 @@ if __name__ == '__main__':
                 pcd = load_pcd(cloud_xyz[idx], labels[idx])
             else:
                 pcd = load_pcd(cloud_xyz[idx], labels[idx], fpv=True)
-            view_cloud(pcd, coord, view_params, render_param_file, video=True, videospeed=args.videospeed)
+            view_cloud_video(pcd, coord, view_params, render_param_file, video=True, videospeed=args.videospeed)
 
     else:
         if args.loadidx == -1:
             args.loadidx = np.random.randint(len(labels))
         if args.viewpoint == 'BEV':
             pcd = load_pcd(cloud_xyz[args.loadidx], labels[args.loadidx])
+            o3d.visualization.draw_geometries([pcd],
+                                              zoom=0.3412,
+                                              front=[-0.268, 1.51238, 66.3],
+                                              lookat=[2.6172, 2.0475, 1.532],
+                                              up=[-0.0694, -0.9768, 0.2024])
         else:
             pcd = load_pcd(cloud_xyz[args.loadidx], labels[args.loadidx], fpv=True)
-
-        view_cloud(pcd, coord, view_params, render_param_file)
+            o3d.visualization.draw_geometries([pcd],
+                                              zoom=0.3412,
+                                              front=[-10, 0, 0],
+                                              lookat=[0, -10, 10],
+                                              up=[0, 0, 1])
 
     print('EXITING')

@@ -33,14 +33,14 @@ Scripts:
 #### view_cloud.py
 
 View cloud allows the reader to visualise our labelled 3D point clouds. Input argument options detailed in the code file. 
-To run, you need to at least have --loaddir set, where --loaddir points to the full path to a wildscenes data folder on 
-your computer, e.g. YOURPATH/wildscenes3d/Karawatha-1. Clouds can be viewed individually, sequentially or as a video.
+To run, you need to include the --loaddir argument, where --loaddir points to the full path to a wildscenes data folder on 
+your computer, e.g. YOURPATH/WildScenes/WildScenes3d/K-01. Clouds can be viewed individually, sequentially or as a video.
 
 #### view_image.py
 
 View image allows the reader to visualise our labelled images. Input argument options detailed in the code file. 
-To run, you need to at least have --loaddir set, where --loaddir points to the full path to a wildscenes data folder on 
-your computer, e.g. YOURPATH/wildscenes2d/Karawatha-1. Images can be viewed individually, sequentially or as a video.
+To run, you need to include the --loaddir argument, where --loaddir points to the full path to a wildscenes data folder on 
+your computer, e.g. YOURPATH/WildScenes/WildScenes2d/V-01. Images can be viewed individually, sequentially or as a video.
 
 ### Trained Models
 

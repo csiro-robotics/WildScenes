@@ -9,6 +9,12 @@ Mamba is a replacement for conda and behaves the same except is faster especiall
 
 These installation instructions are written for CUDA version 12.1.
 
+## Quick Install
+
+
+
+## Long Install
+
 ```shell
 mamba create --name wildscenes python=3.10
 mamba activate wildscenes
@@ -63,6 +69,7 @@ Step 5: Install other required pip packages. Many of these should already have b
 
 ```shell
 pip install opencv-python
+pip install keyboard
 pip install pynput
 pip install tqdm
 pip install pillow

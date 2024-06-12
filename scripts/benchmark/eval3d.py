@@ -5,7 +5,7 @@
 import argparse
 import os
 import os.path as osp
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+# os.environ["CUDA_VISIBLE_DEVICES"]="1"
 import sys
 from pathlib import Path
 
