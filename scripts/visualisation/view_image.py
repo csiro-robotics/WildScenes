@@ -67,7 +67,7 @@ if __name__ == '__main__':
     parser.add_argument('--loaddir', default=str(root_dir.parent / 'Wildscenes2d' / 'K-01'),
                         help="Path to directory in WildScenes to read data, for example K-01")
     parser.add_argument('--loadidx', default=-1, type=int,
-                        help="Specify which cloud index you want to view. Defaults to a random cloud from the traverse")
+                        help="Specify which cloud index you want to view. Defaults to a random image from the traverse")
     parser.add_argument('--sequential', default=False, action='store_true',
                         help="Iteratively view all images in a traverse, starting from 0 or loadidx")
     parser.add_argument('--video', default=False, action='store_true',
@@ -75,8 +75,12 @@ if __name__ == '__main__':
     parser.add_argument('--videospeed', default=0.5, type=float,
                         help='Video playback speed, lower is faster')
     parser.add_argument('--raw', action='store_true',
-                        help="View the raw labels, the full set where pole, asphalt, vehicle and ")
+                        help="View the raw labels, the full set where pole, asphalt, vehicle are included")
     args = parser.parse_args()
+
+    if not os.path.exists(args.loaddir):
+        raise ValueError('Please set the loaddir argument to a subfolder (e.g. K-01) inside the WildScenes dataset. '
+                         'This path (full path) should be set to whereever you downloaded the WildScenes dataset to.')
 
     images = sorted(glob(os.path.join(args.loaddir, 'image', '*')))
     labels = sorted(glob(os.path.join(args.loaddir, 'indexLabel', '*'))) # label / indexLabel
@@ -89,7 +93,6 @@ if __name__ == '__main__':
     else:
         remaplist = []
         for classname, color, index in zip(METAINFO['classes'], METAINFO['palette'], METAINFO['cidx']):
-            print(classname)
             remapped_name = custom_label_map[classname]
             remapped_index = class_2_cidx[remapped_name]
             remaplist.append(remapped_index)
