@@ -65,30 +65,39 @@ Input arguments include:
 
 ### Trained Models
 
-Will be released soon.
+Will be released in the next few weeks.
 
 ### Training code
 
+Please note, training and evaluation code is still WIP, final release expected in the next few weeks.
+
 All training and eval scripts are located in the directory scripts/benchmark. We use the open source mmsegmentation and mmdetection3d repositories for training and evaluating semantic segmentation on WildScenes.
+
+Important: before running any scripts, please first modify the "data_root" path in wildscenes/configs/base/datasets/wildscenes.py
+and in wildscenes/configs3d/base/datasets/wildscenes.py.
+This needs to point to the path to the root directory where you save the repository.
 
 #### 2D Training
 
-2D Training has not been fully released yet, please don't raise issues yet as this section of the code is still being debugged.
+Using mmsegmentation, 2D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
+for running training on some existing 2D semantic segmentation methods.
 
-Using mmsegmentation, 2D models can be trained using train2d.py. 
-We will release pre-configured bash scripts for training soon.
-
-Additional documentation will be released soon.
-
-Please note that the seed is not set by default, therefore your own 2D training will not be able to exactly reproduce the results in the paper.
+Please note that the seed is not set by default, therefore your own 2D training may not exactly reproduce the results in the paper.
 
 #### 3D Training
 
-3D Training is still under development and will be released soon.
+Using mmdetection3d, 3D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
+for running training on some existing 3D semantic segmentation methods.
 
 ### Evaluation code
 
-Evaluation can be performed using eval2d.py and eval3d.py. Documentation and bash scripts will be released soon.
+#### 2D Evaluation
+
+2D models can be evaluated using scripts/benchmark/eval2d.py.
+
+#### 3D Evaluation
+
+3D models can be evaluated using scripts/benchmark/eval3d.py.
 
 ### Citation
 <p>
