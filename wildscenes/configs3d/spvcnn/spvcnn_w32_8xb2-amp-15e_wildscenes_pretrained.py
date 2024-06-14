@@ -64,7 +64,7 @@ model = dict(
         block_type='basic',
         sparseconv_backend='torchsparse',
         drop_ratio=0.3,
-        init_cfg=dict(type='Pretrained', checkpoint='/home/hau047/PycharmProjects/WildScenes/data/util/spvcnn_w32_pretrained_semkitti.pth')),
+        init_cfg=dict(type='Pretrained', checkpoint='/raid/work/hau047/wildscenes/Dev_IJRR_rebuttal/WildScenes/data/util/spvcnn_w32_pretrained_semkitti.pth')),
     decode_head = dict(
         ignore_index=255,
         num_classes=13,

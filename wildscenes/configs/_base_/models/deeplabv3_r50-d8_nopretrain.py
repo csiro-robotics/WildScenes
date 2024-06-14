@@ -1,4 +1,7 @@
-# model settings
+# Modified from https://github.com/open-mmlab/mmsegmentation/blob/main/configs/_base_/models/deeplabv3_r50-d8.py for use with WildScenes
+# Attribution: mmsegmentation, Apache 2.0 license.
+# For additional models, please use the mmsegmentation repository.
+
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 data_preprocessor = dict(
     type='SegDataPreProcessor',

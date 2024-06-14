@@ -27,7 +27,7 @@ param_scheduler = [
         gamma=0.1)
 ]
 
-train_dataloader = dict(batch_size=2, ) # 10 on large gpus
+train_dataloader = dict(batch_size=10, ) # 10 on large gpus
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically

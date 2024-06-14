@@ -1,4 +1,6 @@
 # File from mmsegmentation (https://github.com/open-mmlab/mmsegmentation) and not modified
+# Attribution: mmsegmentation, Apache 2.0 license.
+
 default_scope = 'mmseg'
 env_cfg = dict(
     cudnn_benchmark=True,
