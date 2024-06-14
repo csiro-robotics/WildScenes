@@ -1,10 +1,9 @@
-# For SemanticKitti we usually do 19-class segmentation.
+# This file has been modified from the config file of semanticKITTI to suit WildScenes
 # For labels_map we follow the uniform format of MMDetection & MMSegmentation
 # i.e. we consider the unlabeled class as the last one, which is different
 # from the original implementation of some methods e.g. Cylinder3D.
 dataset_type = 'WildScenesDataset3d'
-# data_root = '/raid/work/hau047/wildscenes/Dev_IJRR_rebuttal/WildScenes/data/processed/wildscenes_opt3d'
-data_root = '/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_opt3d'
+data_root = 'FULLPATHTOTHISREPO/WildScenes/data/processed/wildscenes_opt3d'
 
 # Raw labels (For visualising how to change)
 # labels_map = {
@@ -31,7 +30,6 @@ data_root = '/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_o
 #     20: 19,  # grass
 # }
 
-
 class_names = (
             "bush", # 0
             "dirt", # 1
@@ -47,7 +45,6 @@ class_names = (
             "tree-foliage", # 11
             "tree-trunk", # 12
         )
-
 
 labels_map = {
     255:255, # Unlabeled
@@ -73,19 +70,6 @@ metainfo = dict(
 
 input_modality = dict(use_lidar=True, use_camera=False)
 
-# Example to use different file client
-# Method 1: simply set the data root and let the file I/O module
-# automatically infer from prefix (not support LMDB and Memcache yet)
-
-# data_root = 's3://openmmlab/datasets/detection3d/semantickitti/'
-
-# Method 2: Use backend_args, file_client_args in versions before 1.1.0
-# backend_args = dict(
-#     backend='petrel',
-#     path_mapping=dict({
-#         './data/': 's3://openmmlab/datasets/detection3d/',
-#          'data/': 's3://openmmlab/datasets/detection3d/'
-#      }))
 backend_args = None
 
 train_pipeline = [
@@ -203,7 +187,7 @@ tta_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=2, # 10
+    batch_size=10, # 10
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),

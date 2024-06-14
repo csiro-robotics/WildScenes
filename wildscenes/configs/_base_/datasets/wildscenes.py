@@ -1,5 +1,10 @@
+# This file has been modified from the config file of semanticKITTI to suit WildScenes
+
 dataset_type = "WildscenesDataset"
-data_root = "/home/hau047/PycharmProjects/WildScenes/data/processed/wildscenes_opt2d"
+
+# Please modify the path below and replace FULLPATHTOTHISREPO with where you installed this repo
+data_root = "FULLPATHTOTHISREPO/WildScenes/data/processed/wildscenes_opt2d"
+
 data_prefix=dict(img_path="test/image", seg_map_path="test/indexLabel")
 crop_size = (512, 512)
 num_classes = 18
@@ -29,8 +34,8 @@ train_dataset = dict(
             img_path='train/image', seg_map_path='train/indexLabel'),
         pipeline=train_pipeline)
 train_dataloader = dict(
-    batch_size=2, # correct value = 20
-    num_workers=10, # correct value = 25
+    batch_size=20, # correct value = 20 (small = 2)
+    num_workers=25, # correct value = 25 (small = 10)
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=train_dataset)
