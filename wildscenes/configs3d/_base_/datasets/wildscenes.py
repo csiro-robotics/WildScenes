@@ -1,8 +1,13 @@
 # This file has been modified from the config file of semanticKITTI to suit WildScenes
+# https://github.com/open-mmlab/mmdetection3d/blob/main/configs/_base_/datasets/semantickitti.py
+# Attribution: mmdetection3d, Apache 2.0 license
+
 # For labels_map we follow the uniform format of MMDetection & MMSegmentation
 # i.e. we consider the unlabeled class as the last one, which is different
 # from the original implementation of some methods e.g. Cylinder3D.
 dataset_type = 'WildScenesDataset3d'
+
+# Please modify the path below and replace FULLPATHTOTHISREPO with where you installed this repo
 data_root = 'FULLPATHTOTHISREPO/WildScenes/data/processed/wildscenes_opt3d'
 
 # Raw labels (For visualising how to change)

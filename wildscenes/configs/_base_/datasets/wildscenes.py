@@ -1,4 +1,3 @@
-# This file has been modified from the config file of semanticKITTI to suit WildScenes
 
 dataset_type = "WildscenesDataset"
 
