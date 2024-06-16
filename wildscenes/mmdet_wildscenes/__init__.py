@@ -1,0 +1,1 @@
+from wildscenes.mmdet_wildscenes.dataset.wildscenes3d import WildScenesDataset3d

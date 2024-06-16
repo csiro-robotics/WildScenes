@@ -12,7 +12,9 @@ Please refer to the installation.md file for detailed instructions. The full lis
 
 ### Dataset Setup
 
-Dataset has been released and can be accessed at: https://data.csiro.au/collection/csiro:61541
+The dataset has been released and can be accessed at: https://data.csiro.au/collection/csiro:61541
+
+To download the dataset, it is recommended to use an S3 client. Please select the download method "Download files via S3 Client". A command line tool such as rclone could be used to perform the download.
 
 After downloading the WildScenes dataset to a directory of your choice, before you can use the dataset with this repository, the setup_data.py script needs to be run (scripts/data/setup_data.py).
 
@@ -32,36 +34,70 @@ Scripts:
 
 #### view_cloud.py
 
-View cloud allows the reader to visualise our labelled 3D point clouds. Input argument options detailed in the code file. 
-To run, you need to at least have --loaddir set, where --loaddir points to the full path to a wildscenes data folder on 
-your computer, e.g. YOURPATH/wildscenes3d/Karawatha-1. Clouds can be viewed individually, sequentially or as a video.
+View cloud allows the reader to visualise our labelled 3D point clouds. 
+To run this script, you need to include the --loaddir argument, where --loaddir points to the full path to a wildscenes data folder on 
+your computer, e.g. YOURPATH/WildScenes/WildScenes3d/K-01. Clouds can be viewed individually, sequentially or as a video.
+Default is to display a single cloud, then the program terminates after the user closes the visualization window. 
+The visualization window can be closed using the "q" key.
+
+Input arguments include:
+
+- --loaddir: define the full path to a WildScenes3d subfolder.
+- --viewpoint: Options: [BEV, FPV]. Default: BEV. BEV displays the point cloud from a birds-eye perspective, FPV displays the cloud from a first person perspective.
+- --loadidx: sets the index of the specific cloud you want to view (or specific cloud to start the video from). Defaults to a random cloud.
+- --sequential: rather than viewing a single point cloud, sequential will iteratively load each cloud in a folder. Each subsequent cloud is loaded after the user closes the current visualizer window using the "q" key. This input argument will override the --video argument. To terminate the program, please use Control-C.
+- --video: loads the point clouds sequentially in a video, with no user input required. The playback speed is set using --videospeed. To terminate the video, please use Control-C.
 
 #### view_image.py
 
-View image allows the reader to visualise our labelled images. Input argument options detailed in the code file. 
-To run, you need to at least have --loaddir set, where --loaddir points to the full path to a wildscenes data folder on 
-your computer, e.g. YOURPATH/wildscenes2d/Karawatha-1. Images can be viewed individually, sequentially or as a video.
+View image allows the reader to visualise our labelled images. 
+To run this script, you need to include the --loaddir argument, where --loaddir points to the full path to a wildscenes data folder on 
+your computer, e.g. YOURPATH/WildScenes/WildScenes2d/V-01. Images can be viewed individually, sequentially or as a video.
+Default is to display a single image, then the program terminates after the user closes the visualization window.
+
+Input arguments include:
+
+- --loaddir: define the full path to a WildScenes3d subfolder.
+- --loadidx: sets the index of the specific image you want to view (or specific image to start the video from). Defaults to a random image.
+- --sequential: rather than viewing a single image, sequential will iteratively load each image in a folder. Each subsequent image is displayed after the user closes the current visualizer window using the "q" key. This input argument will override the --video argument. To terminate the program, please use Control-C.
+- --video: loads the images sequentially in a video, with no user input required. The playback speed is set using --videospeed. To terminate the video, please use Control-C.
+- --raw: by default, only the benchmark annotated classes are shown. To display the raw labels including merged and excluded classes, please use this argument.
 
 ### Trained Models
 
-Will be released soon.
+Will be released in the next few weeks.
 
 ### Training code
 
-All training and eval scripts are located in the directory scripts/benchmark.
+Please note, training and evaluation code is still WIP, final release expected in the next few weeks.
+
+All training and eval scripts are located in the directory scripts/benchmark. We use the open source mmsegmentation and mmdetection3d repositories for training and evaluating semantic segmentation on WildScenes.
+
+Important: before running any scripts, please first modify the "data_root" path in wildscenes/configs/base/datasets/wildscenes.py
+and in wildscenes/configs3d/base/datasets/wildscenes.py.
+This needs to point to the path to the root directory where you save the repository.
 
 #### 2D Training
 
-Using mmsegmentation, 2D models can be trained using train2d.py. 
-So far we have released Mask2Former training on WildScenes.
+Using mmsegmentation, 2D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
+for running training on some existing 2D semantic segmentation methods.
+
+Please note that the seed is not set by default, therefore your own 2D training may not exactly reproduce the results in the paper.
 
 #### 3D Training
 
-Will be released soon.
+Using mmdetection3d, 3D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
+for running training on some existing 3D semantic segmentation methods.
 
 ### Evaluation code
 
-Will be released soon.
+#### 2D Evaluation
+
+2D models can be evaluated using scripts/benchmark/eval2d.py.
+
+#### 3D Evaluation
+
+3D models can be evaluated using scripts/benchmark/eval3d.py.
 
 ### Citation
 <p>
@@ -77,3 +113,7 @@ If you find this dataset helpful for your research, please cite our paper using 
       primaryClass={cs.RO}
 }
 ```
+
+### Acknowledgements
+
+We kindly thank the authors of [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) for open sourcing their methods and training scripts.
