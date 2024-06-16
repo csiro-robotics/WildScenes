@@ -82,12 +82,14 @@ This needs to point to the path to the root directory where you save the reposit
 Using mmsegmentation, 2D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
 for running training on some existing 2D semantic segmentation methods.
 
-Please note that the seed is not set by default, therefore your own 2D training may not exactly reproduce the results in the paper.
+Please note that your own 2D training may not exactly reproduce the results in the paper, since we are still in the process of refactoring our training code.
+For the best numbers, please follow the training configurations provided in the paper. All provided scripts are still WIP.
 
 #### 3D Training
 
 Using mmdetection3d, 3D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
 for running training on some existing 3D semantic segmentation methods.
+Please note that your own 3D training may not exactly reproduce the results in the paper, since we are still in the process of refactoring our training code.
 
 ### Evaluation code
 
