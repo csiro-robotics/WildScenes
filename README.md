@@ -84,6 +84,7 @@ for running training on some existing 2D semantic segmentation methods.
 
 Please note that your own 2D training may not exactly reproduce the results in the paper, since we are still in the process of refactoring our training code.
 For the best numbers, please follow the training configurations provided in the paper. All provided scripts are still WIP.
+We have now set a fixed seed (seed=0). The seed can be manually changed by editing wildscenes/configs/base/datasets/wildscenes.py. 
 
 #### 3D Training
 
