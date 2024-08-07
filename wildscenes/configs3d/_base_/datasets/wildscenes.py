@@ -192,8 +192,8 @@ tta_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=10, # 10
-    num_workers=4,
+    batch_size=20,
+    num_workers=8,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=dict(
@@ -251,3 +251,4 @@ visualizer = dict(
     type='Det3DLocalVisualizer', vis_backends=vis_backends, name='visualizer')
 
 tta_model = dict(type='Seg3DTTAModel')
+randomness = dict(seed=0, deterministic=False, diff_rank_seed=True)

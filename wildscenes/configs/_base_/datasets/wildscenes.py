@@ -67,3 +67,4 @@ test_dataloader = dict(
 
 val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
 test_evaluator = val_evaluator
+randomness = dict(seed=0)

@@ -69,6 +69,5 @@ val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
 default_hooks = dict(checkpoint=dict(type='CheckpointHook', interval=1,
-                                     save_best='miou'))
-randomness = dict(seed=0, deterministic=False, diff_rank_seed=True)
+                                     save_best='miou', max_keep_ckpts=2))
 env_cfg = dict(cudnn_benchmark=True)

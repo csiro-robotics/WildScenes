@@ -6,5 +6,5 @@ python -m torch.distributed.launch \
     --nproc_per_node=1 \
     --master_port=29501 \
     scripts/benchmark/train3d.py \
-    "wildscenes/configs3d/spvcnn/spvcnn_w32_1xb20-amp-15e_wildscenes.py" \
+    "wildscenes/configs3d/minkunet/minkunet18_w32_torchsparse_1xb20-amp-15e_wildscenes.py" \
     --launcher pytorch

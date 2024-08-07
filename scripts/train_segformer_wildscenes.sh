@@ -5,6 +5,6 @@ python -m torch.distributed.launch \
     --master_addr="127.0.0.1" \
     --nproc_per_node=2 \
     --master_port=29501 \
-    scripts/benchmark/train3d.py \
-    "wildscenes/configs3d/cylinder3d/cylinder3d_2xb10-3x_wildscenes.py" \
+    scripts/benchmark/train2d.py \
+    "wildscenes/configs/segformer/segformer_mit-b5_2xb20-80k_wildscenes-512x512_standard.py" \
     --launcher pytorch
