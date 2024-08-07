@@ -75,7 +75,7 @@ pip install tqdm
 pip install pillow
 pip install tensorboard
 pip install matplotlib
-pip install open3d==0.1.8
+pip install open3d==0.18.0
 pip install pyntcloud
 pip install wand
 pip install ftfy

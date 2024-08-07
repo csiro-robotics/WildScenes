@@ -27,7 +27,7 @@ param_scheduler = [
         gamma=0.1)
 ]
 
-train_dataloader = dict(batch_size=10, ) # 10 on large gpus
+train_dataloader = dict(batch_size=10, ) # can only use a batch size of 10 for Cylinder3D
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically

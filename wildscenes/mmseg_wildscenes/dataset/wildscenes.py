@@ -2,6 +2,19 @@ from mmseg.registry import DATASETS
 from mmseg.datasets.basesegdataset import BaseSegDataset
 
 
+def _get_reversed_custom_label_map(custom_label_map):
+        rev_custom_label_map = {}
+        label_set = set()
+        for k,v in custom_label_map.items():
+            if v not in label_set:
+                rev_custom_label_map[v] = [k]
+            else:
+                rev_custom_label_map[v].append(k)
+            label_set.add(v)
+        
+        return rev_custom_label_map
+
+
 @DATASETS.register_module()
 class WildscenesDataset(BaseSegDataset):
     """The Wildscenes datasets.
@@ -19,7 +32,7 @@ class WildscenesDataset(BaseSegDataset):
             "other-terrain",
             "tree-trunk",
             "tree-foliage",
-            "bush/shrub",
+            "bush",
             "fence",
             "other-structure",
             "pole",
@@ -32,7 +45,7 @@ class WildscenesDataset(BaseSegDataset):
         ),
         "palette": [
           (0, 0, 0),
-          (230, 25, 75),
+          (255, 165, 0),
           (60, 180, 75),
           (255, 225, 25),
           (0, 130, 200),
@@ -40,14 +53,14 @@ class WildscenesDataset(BaseSegDataset):
           (70, 240, 240),
           (240, 50, 230),
           (210, 245, 60),
-          (250, 190, 190),
+          (230, 25, 75),
           (0, 128, 128),
           (170, 110, 40),
           (255, 250, 200),
           (128, 0, 0),
           (170, 255, 195),
           (128, 128, 0),
-          (255, 215, 180),
+          (250, 190, 190),
           (0, 0, 128),
           (128, 128, 128),
         ],
@@ -149,10 +162,13 @@ class WildscenesDataset(BaseSegDataset):
             new_classes.remove("unlabelled")
         # Alphabetical order removes randomness from label ordering (different in different python processes)
         return sorted(new_classes)
-
+    
 
     def _get_updated_palette(self, custom_label_map):
-        """Update palette after applying the custom label map by assigning original palettes to existing classes and remaining colours in order"""
+        """Update palette after applying the custom label map by assigning original palettes to existing classes 
+        and remaining colours are assigned based on the label mapping from old to new classes"""
+
+        rev_custom_label_map = _get_reversed_custom_label_map(custom_label_map)
         orig_palette = self.METAINFO["palette"]
         orig_classes = self.METAINFO["classes"]
         new_classes = self._get_new_labels(custom_label_map)
@@ -164,11 +180,9 @@ class WildscenesDataset(BaseSegDataset):
         first_el = remaining_palette.pop(0)
         assert first_el == (0,0,0), "First element of the old palette should be (0,0,0)"
         new_palette = []
-        i_existing = 0
         for cls in new_classes:
             if cls in orig_classes:
                 new_palette.append(orig_palette[orig_classes.index(cls)])
             else:
-                new_palette.append(remaining_palette[i_existing])
-                i_existing += 1
+                new_palette.append(orig_palette[orig_classes.index(rev_custom_label_map[cls][-1])])
         return new_palette

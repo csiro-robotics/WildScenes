@@ -69,7 +69,7 @@ Will be released in the next few weeks.
 
 ### Training code
 
-Please note, training and evaluation code is still WIP, final release expected in the next few weeks.
+Update August 2024: release of version two of our WildScenes training code is currently in progress and will be finished updating in the coming days.
 
 All training and eval scripts are located in the directory scripts/benchmark. We use the open source mmsegmentation and mmdetection3d repositories for training and evaluating semantic segmentation on WildScenes.
 
