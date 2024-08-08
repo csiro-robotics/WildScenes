@@ -69,7 +69,7 @@ Will be released in the next few weeks.
 
 ### Training code
 
-Update August 2024: release of version two of our WildScenes training code is currently in progress and will be finished updating in the coming days.
+All training code for WildScenes has now been released.
 
 All training and eval scripts are located in the directory scripts/benchmark. We use the open source mmsegmentation and mmdetection3d repositories for training and evaluating semantic segmentation on WildScenes.
 
@@ -82,25 +82,24 @@ This needs to point to the path to the root directory where you save the reposit
 Using mmsegmentation, 2D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
 for running training on some existing 2D semantic segmentation methods.
 
-Please note that your own 2D training may not exactly reproduce the results in the paper, since we are still in the process of refactoring our training code.
-For the best numbers, please follow the training configurations provided in the paper. All provided scripts are still WIP.
-We have now set a fixed seed (seed=0). The seed can be manually changed by editing wildscenes/configs/base/datasets/wildscenes.py. 
+For the best training results, please follow the training configurations specified by the shell scripts and config files in this repository. Please note that the updated training code will not exactly match the results in the pre-print paper on Arxiv, since we now use a fixed seed (seed=0). The seed can be manually changed by editing wildscenes/configs/base/datasets/wildscenes.py. 
 
 #### 3D Training
 
 Using mmdetection3d, 3D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
 for running training on some existing 3D semantic segmentation methods.
-Please note that your own 3D training may not exactly reproduce the results in the paper, since we are still in the process of refactoring our training code.
+
+For the best training results, please follow the training configurations specified by the shell scripts and config files in this repository. Please note that the updated training code will not exactly match the results in the pre-print paper on Arxiv, since we now use a fixed seed (seed=0). The seed can be manually changed by editing wildscenes/configs3d/base/datasets/wildscenes.py. 
 
 ### Evaluation code
 
 #### 2D Evaluation
 
-2D models can be evaluated using scripts/benchmark/eval2d.py.
+2D models can be evaluated using scripts/benchmark/eval2d.py. We provide shell scripts inside the scripts directory which can be run using bash to evaluate specific methods. For example: bash scripts/eval_deeplabv3_wildscenes.sh.
 
 #### 3D Evaluation
 
-3D models can be evaluated using scripts/benchmark/eval3d.py.
+3D models can be evaluated using scripts/benchmark/eval3d.py. We provide shell scripts inside the scripts directory which can be run using bash to evaluate specific methods. For example: bash scripts/eval_spvcnn_wildscenes.sh.
 
 ### Citation
 <p>
