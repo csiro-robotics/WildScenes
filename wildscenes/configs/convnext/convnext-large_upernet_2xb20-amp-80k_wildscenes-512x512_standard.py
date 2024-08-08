@@ -1,5 +1,5 @@
 _base_ = [
-        "convnext-large_upernet_8xb2-amp-80k_wildscenes-512x512_template.py", "../_base_/datasets/wildscenes_standard.py"
+        "convnext-large_upernet_2xb20-amp-80k_wildscenes-512x512_template.py", "../_base_/datasets/wildscenes_standard.py"
         ]
 
 num_classes = _base_.num_classes

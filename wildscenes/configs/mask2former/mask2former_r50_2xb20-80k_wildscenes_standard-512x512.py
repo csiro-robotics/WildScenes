@@ -197,11 +197,9 @@ default_hooks = dict(
 #   - `enable` means enable scaling LR automatically
 #       or not by default.
 #   - `base_batch_size` = (2 GPUs) x (20 samples per GPU).
-auto_scale_lr = dict(enable=False, base_batch_size=2) # correct value = 40
+auto_scale_lr = dict(enable=False, base_batch_size=40) # correct value = 40
 
-# I think a batch size of 40 will be sufficient - any more is very excessive
-# remember, we only have 6051 images
+# A batch size of 40 will likely be sufficient - any more is very excessive
+# WildScenes only has 6051 images:
 # therefore, every 151 iterations we complete an epoch
 # therefore, after 7563 iterations we have completed 50 epochs
-
-# this will involve using 2 GPUs (H100s)
