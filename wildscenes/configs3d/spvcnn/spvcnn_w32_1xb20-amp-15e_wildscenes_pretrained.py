@@ -64,7 +64,7 @@ model = dict(
         block_type='basic',
         sparseconv_backend='torchsparse',
         drop_ratio=0.3,
-        init_cfg=dict(type='Pretrained', checkpoint='/raid/work/hau047/wildscenes/Dev_IJRR_rebuttal/WildScenes/data/util/spvcnn_w32_pretrained_semkitti.pth')),
+        init_cfg=dict(type='Pretrained', checkpoint='PATH_TO_SEMANTIC_KITTI_CHECKPOINT/spvcnn_w32_pretrained_semkitti.pth')),
     decode_head = dict(
         ignore_index=255,
         num_classes=13,
@@ -82,6 +82,6 @@ val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
 default_hooks = dict(checkpoint=dict(type='CheckpointHook', interval=1,
-                                     save_best='miou'))
+                                     save_best='miou', max_keep_ckpts=2))
 randomness = dict(seed=0, deterministic=False, diff_rank_seed=True)
 env_cfg = dict(cudnn_benchmark=True)

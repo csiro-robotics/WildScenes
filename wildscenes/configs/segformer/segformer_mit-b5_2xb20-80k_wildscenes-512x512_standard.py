@@ -10,8 +10,10 @@ checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segfor
 model = dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
+                  embed_dims=64,
                   num_layers=[3,6,40,3]),
-    decode_head=dict(num_classes=num_classes))
+    decode_head=dict(in_channels=[64, 128, 320, 512], 
+                     num_classes=num_classes))
 # Add the optimiser and scheduler that was used in cityscapes
 optim_wrapper = dict(
     _delete_=True,
