@@ -65,7 +65,8 @@ Input arguments include:
 
 ### Trained Models
 
-Will be released in the next few weeks.
+Trained models for WildScenes are available for download via Dropbox, at:
+[WildScenes Models](https://www.dropbox.com/scl/fo/1za8yjfj0dl8fsddbl9ns/AAZ4xc2PkwcPc14sjY_GhVA?rlkey=3yqq5lpiicjtqqau4cljl66y5&st=fwhd1l86&dl=0)
 
 ### Training code
 
