@@ -14,6 +14,8 @@ Please refer to the installation.md file for detailed instructions. The full lis
 
 The dataset has been released and can be accessed at: https://data.csiro.au/collection/csiro:61541
 
+The dataset includes a directory *WildScenes2d* which contains RGB images and semantic labelled images, *WildScenes3d* which contains 3D labelled point clouds (where all points are visible in the camera), and *Fullclouds* which contain ply files with the full 360 degree point cloud without labels but including intensity (Fullclouds will be available in 1-2 weeks). 
+
 To download the dataset, it is recommended to use an S3 client. Please select the download method "Download files via S3 Client". A command line tool such as rclone could be used to perform the download.
 
 After downloading the WildScenes dataset to a directory of your choice, before you can use the dataset with this repository, the setup_data.py script needs to be run (scripts/data/setup_data.py).
