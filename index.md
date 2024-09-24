@@ -60,7 +60,7 @@ Our dataset consists of over 21km and 300 minutes of continuous lidar traversal,
 
 ### Download
 
-The dataset has been released and can be accessed at https://data.csiro.au/collection/csiro:61541.
+The dataset has been released and can be accessed at <a href="https://data.csiro.au/collection/csiro:61541">https://data.csiro.au/collection/csiro:61541.
 
 ### GitHub
  <p>
@@ -68,6 +68,9 @@ The dataset has been released and can be accessed at https://data.csiro.au/colle
 </p>
 
 ### Paper
+
+Our paper is now available in the International Journal of Robotics Research at: <a href="https://journals.sagepub.com/doi/10.1177/02783649241278369">https://journals.sagepub.com/doi/10.1177/02783649241278369.
+
 <div align="center">
             <a href="https://arxiv.org/abs/2312.15364">
             <img  src="assets/imgs/paper_title.png" height="440" width="340" />
@@ -79,14 +82,6 @@ The dataset has been released and can be accessed at https://data.csiro.au/colle
 <p>
 If you find this paper helpful for your research, please cite our paper using the following reference:
 
-```
-@misc{vidanapathirana2023wildscenes,
-      title={WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Large-scale Natural Environments}, 
-      author={Kavisha Vidanapathirana and Joshua Knights and Stephen Hausler and Mark Cox and Milad Ramezani and Jason Jooste and Ethan Griffiths and Shaheer Mohamed and Sridha Sridharan and Clinton Fookes and Peyman Moghadam},
-      year={2023},
-      eprint={2312.15364},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO}
-}
-```
+Vidanapathirana K, Knights J, Hausler S, et al. WildScenes: A benchmark for 2D and 3D semantic segmentation in large-scale natural environments. The International Journal of Robotics Research. 2024;0(0). doi:10.1177/02783649241278369
+
 </p>
