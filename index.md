@@ -85,3 +85,16 @@ If you find this paper helpful for your research, please cite our paper using th
 Vidanapathirana K, Knights J, Hausler S, et al. WildScenes: A benchmark for 2D and 3D semantic segmentation in large-scale natural environments. The International Journal of Robotics Research. 2024;0(0). doi:10.1177/02783649241278369
 
 </p>
+<pre><code class="citation">
+@article{doi:10.1177/02783649241278369,
+author = {Kavisha Vidanapathirana and Joshua Knights and Stephen Hausler and Mark Cox and Milad Ramezani and Jason Jooste and Ethan Griffiths and Shaheer Mohamed and Sridha Sridharan and Clinton Fookes and Peyman Moghadam},
+title ={WildScenes: A benchmark for 2D and 3D semantic segmentation in large-scale natural environments},
+journal = {The International Journal of Robotics Research},
+volume = {0},
+number = {0},
+pages = {02783649241278369},
+year = {0},
+doi = {10.1177/02783649241278369},
+URL = {https://doi.org/10.1177/02783649241278369}
+}
+</code></pre>
