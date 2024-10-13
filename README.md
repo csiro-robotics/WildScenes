@@ -1,6 +1,7 @@
 # WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Natural Environments [IJRR2024] 
 
 Official paper link: [IJRR](https://doi.org/10.1177/02783649241278369) 
+
 WildScenes Website: [WildScenes](https://csiro-robotics.github.io/WildScenes)
 
 This official repo for WildScenes provides benchmarks for semantic segmentation in 2D and 3D in natural environments. Training is performed using the [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) toolboxs. We thank and acknowledge the contributions of these toolboxes.
