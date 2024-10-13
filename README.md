@@ -1,10 +1,13 @@
-# WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Natural Environments
+# WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Natural Environments [IJRR2024] 
 
-This is the official repo for the WildScenes dataset, which provides benchmarks for semantic segmentation in 2D and 3D. Training is performed using the [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) toolboxs. We thank and acknowledge the contributions of these toolboxes.
+Official paper link: [IJRR](https://doi.org/10.1177/02783649241278369) 
+WildScenes Website: [WildScenes](https://csiro-robotics.github.io/WildScenes)
+
+This official repo for WildScenes provides benchmarks for semantic segmentation in 2D and 3D in natural environments. Training is performed using the [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) toolboxs. We thank and acknowledge the contributions of these toolboxes.
 
 ### Abstract
 
-Recent progress in semantic scene understanding has primarily been enabled by the availability of semantically annotated bi-modal (camera and LiDAR) datasets in urban environments. However such annotated datasets are also needed for natural, unstructured environments to enable semantic perception for important applications including search and rescue, conservation monitoring and agricultural automation. Therefore we introduce WildScenes, a bi-modal dataset including densely annotated semantic annotations in both 2D (images) and 3D (lidar point clouds), alongside 6-DoF ground truth information. We introduce benchmarks on 2D and 3D semantic segmentation and evaluate using a variety of recent deep learning techniques, to demonstrate the challenges in semantic inference in natural environments. Additionally, our dataset also provides a method for accurately projecting 2D labels into 3D, and we also provide a custom split generation algorithm to produce an optimal label distribution for training neural networks on our dataset. Finally, for the first time our dataset provides label distributions for all 3D points, enabling future applications such as label distribution learning.
+Recent progress in semantic scene understanding has primarily been enabled by the availability of semantically annotated bi-modal (camera and LiDAR) datasets in urban environments. However such annotated datasets are also needed for natural, unstructured environments to enable semantic perception for important applications including search and rescue, conservation monitoring and agricultural automation. Therefore we introduce WildScenes, a bi-modal dataset including densely annotated semantic annotations in both 2D (images) and 3D (lidar point clouds), alongside 6-DoF ground truth information. We introduce benchmarks on 2D and 3D semantic segmentation and evaluate using a variety of recent deep learning techniques, to demonstrate the challenges in semantic inference in natural environments. Additionally, our dataset also provides a method for accurately projecting 2D labels into 3D, and we also provide a custom split generation algorithm to produce an optimal label distribution for training neural networks on our dataset. Finally, for the first time, our dataset provides label distributions for all 3D points, enabling future applications such as label distribution learning.
 
 ### Package Requirements
 
@@ -109,13 +112,16 @@ For the best training results, please follow the training configurations specifi
 If you find this dataset helpful for your research, please cite our paper using the following reference:
 
 ```
-@misc{vidanapathirana2023wildscenes,
+@article{wildscenes2024,
       title={WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Large-scale Natural Environments}, 
       author={Kavisha Vidanapathirana and Joshua Knights and Stephen Hausler and Mark Cox and Milad Ramezani and Jason Jooste and Ethan Griffiths and Shaheer Mohamed and Sridha Sridharan and Clinton Fookes and Peyman Moghadam},
-      year={2023},
-      eprint={2312.15364},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO}
+      journal = {The International Journal of Robotics Research},
+      volume = {0},
+      number = {0},
+      pages = {02783649241278369},
+      year = {0},
+      doi = {10.1177/02783649241278369},
+      year={2024}
 }
 ```
 
