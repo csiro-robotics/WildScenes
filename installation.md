@@ -10,7 +10,11 @@ Mamba is a replacement for conda and behaves the same except is faster especiall
 These installation instructions are written for CUDA version 12.1.
 
 ## Quick Install
+For easy installation of the dependencies for running WildScenes, we provide a dockerfile for building a docker image which contains all the required dependencies.  To build this docker image run the following command from the ```docker``` folder in this repository:
 
+``` docker build . -t wildscenes```
+
+This docker image can then be used for training and testing models using the mmdetection3d and mmsegmentation repositories.  See ```docker/test_mm3d_docker.sh``` for an example on how to run training and testing scripts using a docker container.
 
 
 ## Long Install
