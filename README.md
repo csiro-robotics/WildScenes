@@ -25,26 +25,30 @@ Recent progress in semantic scene understanding has primarily been enabled by th
 
 We provide a dockerfile for building a docker image which contains all the required dependencies. To evaluate a model using Docker, you can use the provided test_mm3d_docker.sh script. This script runs inference on the WildScenes dataset using the MMDetection3D framework within a prebuilt Docker container. Please refer to the installation.md file for detailed instructions. 
 
+---
 ### Package Requirements
 
 Please refer to the installation.md file for detailed instructions. The full list of required packages are also detailed in the requirements.txt file. Requires Python >= 3.8 and recommend Python = 3.10.
 
+---
 ### Dataset Setup
 
 The dataset has been released and can be accessed at: [https://data.csiro.au/collection/csiro:61541](https://doi.org/10.25919/aetq-q420)
 
-The dataset includes a directory *WildScenes2d* which contains RGB images and semantic labelled images, *WildScenes3d* which contains 3D labelled point clouds (where all points are visible in the camera), and *Fullclouds* which contain ply files with the full 360 degree point cloud without labels but including intensity. 
+The dataset includes a directory *WildScenes2d* which contains RGB images, semantic labelled images, camera calibration data (intrinsics and extrinsics), and camera poses *WildScenes3d* which contains 3D labelled point clouds and their 3D poses (where all points are visible in the camera), and *Fullclouds* which contain ply files with the full 360 degree point cloud without labels but including intensity. 
 
 To download the dataset, it is recommended to use an S3 client. Please select the download method "Download files via S3 Client". A command line tool such as rclone could be used to perform the download.
 
 After downloading the WildScenes dataset to a directory of your choice, before you can use the dataset with this repository, the setup_data.py script needs to be run (scripts/data/setup_data.py).
 
+---
 #### setup_data.py
 
 This script creates full paths to individual files in the WildScenes dataset, based on your dataset save location and the split details in /data/splits.
 The input argument --dataset_rootdir is required, and must be the full path to the root directory of WildScenes. 
 This script will produce pickle files for 3D training and evaluation, and setup symlinks for 2D training and evaluation.
 
+---
 ### Visualization Scripts
 
 This repo includes some scripts for viewing the dataset.
@@ -53,6 +57,7 @@ Scripts:
 1) view_cloud.py (scripts/visualisation/view_cloud.py)
 2) view_image.py (scripts/visualisation/view_image.py)
 
+---
 #### view_cloud.py
 
 View cloud allows the reader to visualise our labelled 3D point clouds. 
@@ -69,6 +74,7 @@ Input arguments include:
 - --sequential: rather than viewing a single point cloud, sequential will iteratively load each cloud in a folder. Each subsequent cloud is loaded after the user closes the current visualizer window using the "q" key. This input argument will override the --video argument. To terminate the program, please use Control-C.
 - --video: loads the point clouds sequentially in a video, with no user input required. The playback speed is set using --videospeed. To terminate the video, please use Control-C.
 
+---
 #### view_image.py
 
 View image allows the reader to visualise our labelled images. 
@@ -84,11 +90,13 @@ Input arguments include:
 - --video: loads the images sequentially in a video, with no user input required. The playback speed is set using --videospeed. To terminate the video, please use Control-C.
 - --raw: by default, only the benchmark annotated classes are shown. To display the raw labels including merged and excluded classes, please use this argument.
 
+---
 ### Trained Models
 
 Trained models for WildScenes are available for download via Dropbox, at:
 [WildScenes Models](https://www.dropbox.com/scl/fo/1za8yjfj0dl8fsddbl9ns/AAZ4xc2PkwcPc14sjY_GhVA?rlkey=3yqq5lpiicjtqqau4cljl66y5&st=fwhd1l86&dl=0)
 
+---
 ### Training code
 
 All training code for WildScenes has now been released.
@@ -99,6 +107,7 @@ Important: before running any scripts, please first modify the "data_root" path 
 and in wildscenes/configs3d/base/datasets/wildscenes.py.
 This needs to point to the path to the root directory where you save the repository.
 
+---
 #### 2D Training
 
 Using mmsegmentation, 2D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
@@ -106,6 +115,7 @@ for running training on some existing 2D semantic segmentation methods.
 
 For the best training results, please follow the training configurations specified by the shell scripts and config files in this repository. Please note that the updated training code will not exactly match the results in the pre-print paper on Arxiv, since we now use a fixed seed (seed=0). The seed can be manually changed by editing wildscenes/configs/base/datasets/wildscenes.py. 
 
+---
 #### 3D Training
 
 Using mmdetection3d, 3D models can be trained using scripts/benchmark/train2d.py. We have released pre-configured scripts
@@ -113,6 +123,7 @@ for running training on some existing 3D semantic segmentation methods.
 
 For the best training results, please follow the training configurations specified by the shell scripts and config files in this repository. Please note that the updated training code will not exactly match the results in the pre-print paper on Arxiv, since we now use a fixed seed (seed=0). The seed can be manually changed by editing wildscenes/configs3d/base/datasets/wildscenes.py. 
 
+---
 ### Evaluation code
 
 #### 2D Evaluation
@@ -123,6 +134,7 @@ For the best training results, please follow the training configurations specifi
 
 3D models can be evaluated using scripts/benchmark/eval3d.py. We provide shell scripts inside the scripts directory which can be run using bash to evaluate specific methods. For example: bash scripts/eval_spvcnn_wildscenes.sh.
 
+---
 ### Citation
 <p>
 If you find this dataset helpful for your research, please cite our paper using the following reference:
