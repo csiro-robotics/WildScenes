@@ -132,12 +132,11 @@ If you find this dataset helpful for your research, please cite our paper using 
       title={WildScenes: A Benchmark for 2D and 3D Semantic Segmentation in Large-scale Natural Environments}, 
       author={Kavisha Vidanapathirana and Joshua Knights and Stephen Hausler and Mark Cox and Milad Ramezani and Jason Jooste and Ethan Griffiths and Shaheer Mohamed and Sridha Sridharan and Clinton Fookes and Peyman Moghadam},
       journal = {The International Journal of Robotics Research},
-      volume = {0},
-      number = {0},
-      pages = {02783649241278369},
-      year = {0},
-      doi = {10.1177/02783649241278369},
-      year={2024}
+      volume = {44},
+      number = {4},
+      pages = {532-549},
+      year = {2025},
+      doi = {10.1177/02783649241278369}
 }
 ```
 
