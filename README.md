@@ -7,11 +7,6 @@ WildScenes Website: [WildScenes](https://csiro-robotics.github.io/WildScenes)
 This official repo for WildScenes provides benchmarks for semantic segmentation in 2D and 3D in natural environments. Training is performed using the [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and [mmdetection3d](https://github.com/open-mmlab/mmdetection3d) toolboxs. We thank and acknowledge the contributions of these toolboxes.
 
 ---
-### Abstract
-
-Recent progress in semantic scene understanding has primarily been enabled by the availability of semantically annotated bi-modal (camera and LiDAR) datasets in urban environments. However such annotated datasets are also needed for natural, unstructured environments to enable semantic perception for important applications including search and rescue, conservation monitoring and agricultural automation. Therefore we introduce WildScenes, a bi-modal dataset including densely annotated semantic annotations in both 2D (images) and 3D (lidar point clouds), alongside 6-DoF ground truth information. We introduce benchmarks on 2D and 3D semantic segmentation and evaluate using a variety of recent deep learning techniques, to demonstrate the challenges in semantic inference in natural environments. Additionally, our dataset also provides a method for accurately projecting 2D labels into 3D, and we also provide a custom split generation algorithm to produce an optimal label distribution for training neural networks on our dataset. Finally, for the first time, our dataset provides label distributions for all 3D points, enabling future applications such as label distribution learning.
-
----
 ### 📌 Updates 
 
 #### 📦 Docker Support Added – *17 May 2025* 
@@ -21,9 +16,22 @@ Recent progress in semantic scene understanding has primarily been enabled by th
 
 
 ---
+### Abstract
+
+Recent progress in semantic scene understanding has primarily been enabled by the availability of semantically annotated bi-modal (camera and LiDAR) datasets in urban environments. However such annotated datasets are also needed for natural, unstructured environments to enable semantic perception for important applications including search and rescue, conservation monitoring and agricultural automation. Therefore we introduce WildScenes, a bi-modal dataset including densely annotated semantic annotations in both 2D (images) and 3D (lidar point clouds), alongside 6-DoF ground truth information. We introduce benchmarks on 2D and 3D semantic segmentation and evaluate using a variety of recent deep learning techniques, to demonstrate the challenges in semantic inference in natural environments. Additionally, our dataset also provides a method for accurately projecting 2D labels into 3D, and we also provide a custom split generation algorithm to produce an optimal label distribution for training neural networks on our dataset. Finally, for the first time, our dataset provides label distributions for all 3D points, enabling future applications such as label distribution learning.
+
+
+
+---
 ### 🔧 Running with Docker
 
 We provide a dockerfile for building a docker image which contains all the required dependencies. To evaluate a model using Docker, you can use the provided test_mm3d_docker.sh script. This script runs inference on the WildScenes dataset using the MMDetection3D framework within a prebuilt Docker container. Please refer to the installation.md file for detailed instructions. 
+
+For easy installation of the dependencies for running WildScenes, we provide a dockerfile for building a docker image which contains all the required dependencies.  To build this docker image run the following command from the ```docker``` folder in this repository:
+
+``` docker build . -t wildscenes```
+
+This docker image can then be used for training and testing models using the mmdetection3d and mmsegmentation repositories.  See ```docker/test_mm3d_docker.sh``` for an example on how to run training and testing scripts using a docker container.
 
 ---
 ### Package Requirements
