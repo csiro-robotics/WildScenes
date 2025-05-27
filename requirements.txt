@@ -58,7 +58,7 @@ matplotlib==3.5.3
 matplotlib-inline==0.1.7
 mccabe==0.7.0
 mdurl==0.1.2
-mmcv==2.0.1
+# mmcv==2.0.1 ## https://github.com/open-mmlab/mmcv.git #ea53ed0
 mmdet==3.0.0
 mmdet3d==1.4.0
 mmengine==0.10.7
