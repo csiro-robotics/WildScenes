@@ -8,16 +8,16 @@ from tqdm import tqdm
 def get_info(csv_path: Path, dset_path: Path):
     df = pd.read_csv(csv_path, dtype=str)
 
-    df['lidar_path'] = df['lidar_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
-    df['label_path'] = df['label_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
-    df['hist_path'] = df['hist_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
+    # df['lidar_path'] = df['lidar_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
+    # df['label_path'] = df['label_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
+    # df['hist_path'] = df['hist_path'].str.replace('WildScenes3d', str(dset_path) + '/WildScenes3d')
 
     data_list = []
 
     for idx, row in tqdm(df.iterrows(), total=len(df)):
-        assert os.path.exists(row['lidar_path']), f"ERROR: {row['lidar_path']}"
-        assert os.path.exists(row['label_path']), f"ERROR: {row['label_path']}"
-        assert os.path.exists(row['hist_path']), f"ERROR: {row['hist_path']}"
+        assert os.path.exists(os.path.join(str(dset_path), row['lidar_path'])), f"ERROR: {row['lidar_path']}"
+        assert os.path.exists(os.path.join(str(dset_path), row['label_path'])), f"ERROR: {row['label_path']}"
+        assert os.path.exists(os.path.join(str(dset_path), row['hist_path'])), f"ERROR: {row['hist_path']}"
         data_item = {
             'lidar_points': {
                 'lidar_path': row['lidar_path'],
